@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tawari Digital — Nairobi's Apple Specialists</title>
+<meta name="description" content="Premium Apple device sales and repair in Westlands, Nairobi. iPhone, iPad, and Mac — sold, serviced, and perfected.">
+<style>
+  :root{
+    --black:#000000;
+    --white:#ffffff;
+    --offwhite:#f5f5f7;
+    --gray:#86868b;
+    --gray-dark:#1d1d1f;
+    --hairline:#d2d2d7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:var(--white);
+    color:var(--black);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    height:44px;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  nav.scrolled{border-bottom:1px solid var(--hairline);}
+  nav.dark{background:rgba(0,0,0,0.8);}
+  nav.dark.scrolled{border-bottom:1px solid #333;}
+  .nav-inner{
+    max-width:1024px;margin:0 auto;height:44px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 22px;
+  }
+  .nav-logo{font-size:14px;font-weight:600;letter-spacing:.2px;}
+  nav.dark .nav-logo, nav.dark .nav-links a{color:var(--white);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{font-size:12px;font-weight:400;color:var(--gray-dark);opacity:.85;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{font-size:12px;color:var(--gray-dark);}
+  @media (max-width:734px){
+    .nav-links{display:none;}
+  }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:var(--black);
+    color:var(--white);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    padding:140px 22px 80px;
+    position:relative;
+  }
+  .eyebrow{
+    font-size:19px;font-weight:600;color:var(--gray);margin-bottom:8px;
+    letter-spacing:.2px;
+  }
+  .hero h1{
+    font-size:clamp(40px,8vw,80px);
+    font-weight:600;
+    letter-spacing:-.03em;
+    line-height:1.05;
+    max-width:900px;
+  }
+  .hero p.sub{
+    font-size:clamp(18px,2.4vw,28px);
+    font-weight:400;
+    color:#f5f5f7;
+    margin-top:14px;
+    max-width:620px;
+    line-height:1.4;
+  }
+  .btn-row{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:980px;
+    font-size:17px;
+    font-weight:400;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{opacity:.85;}
+  .btn-primary{background:#0071e3;color:var(--white);}
+  .btn-primary.on-black{background:var(--white);color:var(--black);}
+  .btn-outline{border:1px solid var(--white);color:var(--white);}
+  .hero-visual{
+    margin-top:60px;
+    width:100%;max-width:760px;
+    aspect-ratio:16/9;
+    border-radius:24px;
+    background:linear-gradient(145deg,#1d1d1f,#000000 60%,#2a2a2c);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-visual::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 60%);
+  }
+  .device-glyph{font-size:15px;color:var(--gray);letter-spacing:.3px;z-index:1;}
+
+  /* SECTION SHELL */
+  section{padding:100px 22px;}
+  .section-inner{max-width:1024px;margin:0 auto;}
+  .section-white{background:var(--white);color:var(--black);}
+  .section-offwhite{background:var(--offwhite);color:var(--black);}
+  .section-black{background:var(--black);color:var(--white);}
+
+  .section-head{text-align:center;margin-bottom:56px;}
+  .section-head .eyebrow-sm{font-size:14px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+  .section-head h2{
+    font-size:clamp(32px,5vw,56px);
+    font-weight:600;
+    letter-spacing:-.02em;
+    line-height:1.08;
+  }
+  .section-head p{
+    font-size:19px;color:var(--gray);max-width:600px;margin:16px auto 0;
+    line-height:1.5;
+  }
+  .section-black .section-head p{color:#a1a1a6;}
+
+  /* CARD GRID — Sales/Repair */
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  @media (max-width:900px){.grid-3{grid-template-columns:1fr;}}
+  @media (max-width:1000px){.grid-4{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.grid-4{grid-template-columns:1fr;}}
+  .card{
+    background:var(--white);
+    border-radius:18px;
+    padding:40px 32px;
+    border:1px solid var(--hairline);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.08);}
+  .card .icon{
+    width:48px;height:48px;border-radius:12px;background:var(--black);
+    display:flex;align-items:center;justify-content:center;color:var(--white);
+    font-size:20px;font-weight:600;margin-bottom:24px;
+  }
+  .card h3{font-size:22px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em;}
+  .card p{font-size:15px;color:var(--gray);line-height:1.6;margin-bottom:16px;}
+  .card a{font-size:14px;color:#0071e3;font-weight:500;}
+  .card a::after{content:" \2192";}
+
+  /* REPAIR DIAGNOSTIC STRIP — signature element */
+  .diag{
+    display:flex;align-items:stretch;
+    border-radius:22px;overflow:hidden;
+    border:1px solid #333;
+    margin-top:64px;
+  }
+  @media (max-width:800px){.diag{flex-direction:column;}}
+  .diag-step{
+    flex:1;padding:32px 26px;border-right:1px solid #2c2c2e;position:relative;
+  }
+  .diag-step:last-child{border-right:none;}
+  .diag-num{font-size:13px;color:var(--gray);margin-bottom:14px;letter-spacing:.05em;}
+  .diag-step h4{font-size:18px;font-weight:600;margin-bottom:8px;}
+  .diag-step p{font-size:14px;color:#a1a1a6;line-height:1.55;}
+
+  /* PRICING TABLE */
+  .price-table{width:100%;border-collapse:collapse;margin-top:20px;}
+  .price-table th{
+    text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--gray);padding:14px 12px;border-bottom:1px solid var(--hairline);font-weight:600;
+  }
+  .price-table td{
+    padding:18px 12px;border-bottom:1px solid var(--hairline);font-size:16px;
+  }
+  .price-table td.price{font-weight:600;text-align:right;}
+  .price-table tr:last-child td{border-bottom:none;}
+  .tier-tag{
+    display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:980px;
+    background:var(--black);color:var(--white);margin-left:8px;letter-spacing:.02em;
+  }
+
+  /* LOYALTY / TRADE-IN */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  @media (max-width:800px){.split{grid-template-columns:1fr;}}
+  .split-visual{
+    aspect-ratio:4/3;border-radius:20px;
+    background:linear-gradient(160deg,#f5f5f7,#e8e8ed);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gray);font-size:14px;
+  }
+  .split h3{font-size:30px;font-weight:600;letter-spacing:-.02em;margin-bottom:14px;}
+  .split p{font-size:17px;color:var(--gray);line-height:1.6;margin-bottom:20px;}
+  .split ul{list-style:none;}
+  .split ul li{
+    font-size:15px;padding:10px 0;border-bottom:1px solid var(--hairline);
+    display:flex;justify-content:space-between;color:var(--gray-dark);
+  }
+
+  /* LOCATION */
+  .location-box{
+    background:var(--black);color:var(--white);
+    border-radius:24px;
+    padding:60px 40px;
+    display:grid;grid-template-columns:1.2fr 1fr;gap:40px;
+  }
+  @media (max-width:800px){.location-box{grid-template-columns:1fr;padding:40px 24px;}}
+  .location-box h3{font-size:28px;font-weight:600;margin-bottom:18px;}
+  .loc-row{display:flex;gap:14px;margin-bottom:18px;font-size:15px;color:#d1d1d6;line-height:1.5;}
+  .loc-label{color:var(--gray);min-width:90px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;padding-top:2px;}
+  .hours-list{font-size:14px;color:#d1d1d6;line-height:2;}
+
+  /* FOOTER */
+  footer{background:var(--offwhite);padding:40px 22px 30px;border-top:1px solid var(--hairline);}
+  .footer-inner{max-width:1024px;margin:0 auto;}
+  .footer-top{font-size:12px;color:var(--gray);line-height:1.6;padding-bottom:20px;border-bottom:1px solid var(--hairline);margin-bottom:20px;}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--gray);}
+  .footer-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .footer-links a{color:var(--gray);}
+  .footer-links a:hover{text-decoration:underline;}
+
+  /* CONTACT FORM */
+  .contact-form-wrap{max-width:600px;margin:0 auto;}
+  .contact-form{display:flex;flex-direction:column;gap:20px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:560px){.form-row{grid-template-columns:1fr;}}
+  .form-field{display:flex;flex-direction:column;gap:8px;}
+  .form-field label{font-size:13px;font-weight:600;color:var(--gray-dark);}
+  .form-field input,.form-field textarea{
+    font-family:inherit;font-size:16px;padding:12px 14px;
+    border:1px solid var(--hairline);border-radius:10px;
+    background:var(--white);color:var(--black);
+    outline:none;transition:border-color .2s ease;
+  }
+  .form-field input:focus,.form-field textarea:focus{border-color:var(--black);}
+  .contact-form .btn{align-self:flex-start;font-size:16px;}
+  .form-note{font-size:13px;color:var(--gray);margin-top:-6px;}
+
+  ::selection{background:var(--black);color:var(--white);}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">Tawari Digital</div>
+    <ul class="nav-links">
+      <li><a href="#sales">Sales</a></li>
+      <li><a href="#repairs">Repairs</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#care-club">Care Club</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="nav-cta">Westlands, Nairobi</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="eyebrow">Tawari Digital</div>
+  <h1>Sold. Serviced.<br>Perfected.</h1>
+  <p class="sub">Nairobi's home for genuine Apple devices and expert repair — under one roof in Westlands.</p>
+  <div class="btn-row">
+    <a href="#sales" class="btn btn-primary">Shop devices</a>
+    <a href="#repairs" class="btn btn-outline">Book a repair</a>
+  </div>
+  <div class="hero-visual">
+    <div class="device-glyph">iPhone · iPad · MacBook · Apple Watch</div>
+  </div>
+</header>
+
+<!-- SALES -->
+<section class="section-white" id="sales">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-sm">Devices</div>
+      <h2>Every device.<br>Genuinely Apple.</h2>
+      <p>New and certified pre-owned iPhone, iPad, Mac, and Apple Watch — each one inspected, tested, and backed by our own warranty.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card">
+        <div class="icon">i</div>
+        <h3>iPhone</h3>
+        <p>The full lineup, from the latest release to value-priced certified models. Every unit passes our 30-point check.</p>
+        <a href="#visit">See what's in stock</a>
+      </div>
+      <div class="card">
+        <div class="icon">i</div>
+        <h3>iPad</h3>
+        <p>For work, school, and everything between. Cellular and Wi-Fi models, with accessories fitted on the spot.</p>
+        <a href="#visit">See what's in stock</a>
+      </div>
+      <div class="card">
+        <div class="icon">M</div>
+        <h3>MacBook</h3>
+        <p>Air and Pro, new and certified pre-owned — plus SSD, RAM, and battery upgrades for older models.</p>
+        <a href="#visit">See what's in stock</a>
+      </div>
+      <div class="card">
+        <div class="icon">W</div>
+        <h3>Apple Watch</h3>
+        <p>Series and SE models, new and certified pre-owned, with bands fitted and set up before you leave.</p>
+        <a href="#visit">See what's in stock</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPAIRS -->
+<section class="section-black" id="repairs">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-sm" style="color:#a1a1a6;">Repairs</div>
+      <h2>Fixed right.<br>Fixed fast.</h2>
+      <p>iPhone, iPad, Mac, and Apple Watch — screen, battery, charging port, water damage, logic board. Diagnosed properly before a single screw comes out.</p>
+    </div>
+
+    <div class="diag">
+      <div class="diag-step">
+        <div class="diag-num">01</div>
+        <h4>Diagnose</h4>
+        <p>Free, no-obligation assessment. We tell you exactly what's wrong and what it costs — no guesswork.</p>
+      </div>
+      <div class="diag-step">
+        <div class="diag-num">02</div>
+        <h4>Repair</h4>
+        <p>Genuine and premium-grade parts only. Most screen and battery jobs are done same day.</p>
+      </div>
+      <div class="diag-step">
+        <div class="diag-num">03</div>
+        <h4>Test</h4>
+        <p>Every repair leaves on a full function test — display, battery health, cameras, and connectivity.</p>
+      </div>
+      <div class="diag-step">
+        <div class="diag-num">04</div>
+        <h4>Warranty</h4>
+        <p>Every repair is covered, so you leave with confidence, not just a working phone.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="#pricing" class="btn btn-primary on-black">See repair pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section-white" id="pricing">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-sm">Pricing</div>
+      <h2>Three ways to fix it.</h2>
+      <p>Choose the turnaround that fits you. Every tier uses the same rigorous repair process.</p>
+    </div>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Service tier</th>
+          <th>Turnaround</th>
+          <th style="text-align:right;">From</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Express <span class="tier-tag">Same day</span></td>
+          <td>60–90 minutes</td>
+          <td class="price">KSh 3,500</td>
+        </tr>
+        <tr>
+          <td>Standard</td>
+          <td>Same day, priority queue</td>
+          <td class="price">KSh 2,800</td>
+        </tr>
+        <tr>
+          <td>Economy</td>
+          <td>24–48 hours</td>
+          <td class="price">KSh 2,200</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--gray);margin-top:16px;">Pricing shown is for standard screen replacement on common iPhone models. Final quote confirmed after free diagnosis.</p>
+  </div>
+</section>
+
+<!-- CARE CLUB / TRADE-IN -->
+<section class="section-offwhite" id="care-club">
+  <div class="section-inner">
+    <div class="split">
+      <div>
+        <div class="eyebrow-sm">Tawari Care Club</div>
+        <h3>Loyalty that actually pays off.</h3>
+        <p>Every repair and purchase earns you credit toward your next visit — plus priority booking and exclusive trade-in rates.</p>
+        <ul>
+          <li><span>Repair credit</span><span>5% back</span></li>
+          <li><span>Priority booking</span><span>Included</span></li>
+          <li><span>Trade-in bonus</span><span>Up to 10%</span></li>
+        </ul>
+        <a href="#visit" class="btn btn-primary" style="margin-top:10px;">Join in-store</a>
+      </div>
+      <div class="split-visual">Care Club</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="section-white" id="visit">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-sm">Visit</div>
+      <h2>Come see us in Westlands.</h2>
+    </div>
+    <div class="location-box">
+      <div>
+        <h3>Tawari Digital</h3>
+        <div class="loc-row">
+          <div class="loc-label">Address</div>
+          <div>Westlands Commercial Center, Westlands, Nairobi</div>
+        </div>
+        <div class="loc-row">
+          <div class="loc-label">Phone</div>
+          <div><a href="tel:+254710130021" style="color:inherit;">0710 130 021</a></div>
+        </div>
+        <div class="loc-row">
+          <div class="loc-label">Email</div>
+          <div><a href="mailto:info@justapple.co.ke" style="color:inherit;">info@justapple.co.ke</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="loc-label" style="margin-bottom:10px;">Hours</div>
+        <div class="hours-list">
+          Monday – Friday: 9:00 – 19:00<br>
+          Saturday: 9:00 – 18:00<br>
+          Sunday: 11:00 – 17:00
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <div class="section-head" style="margin-top:80px;margin-bottom:32px;">
+        <div class="eyebrow-sm">Get in touch</div>
+        <h2 style="font-size:clamp(28px,4vw,40px);">Send us a message.</h2>
+        <p>We'll reply by email — usually within a few hours during business hours.</p>
+      </div>
+      <form id="contact-form" class="contact-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label for="cf-phone">Phone</label>
+            <input type="tel" id="cf-phone" name="phone">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cf-device">Device</label>
+          <input type="text" id="cf-device" name="device" placeholder="e.g. iPhone 13, Apple Watch Series 8">
+        </div>
+        <div class="form-field">
+          <label for="cf-message">What do you need help with?</label>
+          <textarea id="cf-message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="border:none;cursor:pointer;">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      Tawari Digital is an independent Apple device sales and repair specialist. Not affiliated with, endorsed, or sponsored by Apple Inc. Apple, iPhone, iPad, and MacBook are trademarks of Apple Inc.
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Tawari Digital Limited. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#sales">Sales</a>
+        <a href="#repairs">Repairs</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#visit">Visit</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav bar scroll + section-aware color state
+  const nav = document.getElementById('navbar');
+  const darkSections = document.querySelectorAll('.section-black, .hero');
+
+  function updateNav(){
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+
+    let onDark = false;
+    darkSections.forEach(sec => {
+      const r = sec.getBoundingClientRect();
+      if(r.top <= 44 && r.bottom >= 44){ onDark = true; }
+    });
+    nav.classList.toggle('dark', onDark);
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+
+  // Contact form -> opens the visitor's email client with a prefilled message
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value;
+    const phone = document.getElementById('cf-phone').value;
+    const device = document.getElementById('cf-device').value;
+    const message = document.getElementById('cf-message').value;
+
+    const subject = encodeURIComponent('Enquiry from Tawari Digital website — ' + name);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Phone: ' + (phone || '—') + '\n' +
+      'Device: ' + (device || '—') + '\n\n' +
+      'Message:\n' + message
+    );
+    window.location.href = 'mailto:info@justapple.co.ke?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
