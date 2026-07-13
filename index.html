@@ -111,7 +111,30 @@
     background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 60%);
   }
   .device-glyph{font-size:15px;color:var(--gray);letter-spacing:.3px;z-index:1;}
+.hero-stats{
+    margin-top:60px;
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
 
+.stat{
+    text-align:center;
+}
+
+.stat h3{
+    font-size:34px;
+    font-weight:700;
+    color:white;
+    margin-bottom:8px;
+}
+
+.stat span{
+    color:#86868b;
+    font-size:14px;
+    letter-spacing:.5px;
+}
   /* SECTION SHELL */
   section{padding:100px 22px;}
   .section-inner{max-width:1024px;margin:0 auto;}
@@ -260,7 +283,7 @@
 
 <nav id="navbar">
   <div class="nav-inner">
-    <div class="nav-logo">Tawari Digital</div>
+    <a href="#" class="nav-logo">Tawari Digital</a>
     <ul class="nav-links">
       <li><a href="#sales">Sales</a></li>
       <li><a href="#repairs">Repairs</a></li>
@@ -276,13 +299,40 @@
 <header class="hero">
   <div class="eyebrow">Tawari Digital</div>
   <h1>Sold. Serviced.<br>Perfected.</h1>
-  <p class="sub">Nairobi's home for genuine Apple devices and expert repair — under one roof in Westlands.</p>
-  <div class="btn-row">
+  <p class="sub">Genuine Apple devices and Premium Service. Precision diagnostics, premium-quality parts and same-day service you can trust. — under one roof in Westlands, Nairobi.</p>
+  <div class="btn-row"> 
     <a href="#sales" class="btn btn-primary">Shop devices</a>
     <a href="#repairs" class="btn btn-outline">Book a repair</a>
   </div>
+  <div class="hero-stats">
+
+
+  <div class="stat">
+    <h3>15,000+</h3>
+    <span>Devices Repaired</span>
+  </div>
+
+
+  <div class="stat">
+    <h3>Since 2023</h3>
+    <span>Trusted Apple Specialists</span>
+  </div>
+
+
+  <div class="stat">
+    <h3>Same Day</h3>
+    <span>Most Repairs</span>
+  </div>
+
+
+  <div class="stat">
+    <h3>90 Days</h3>
+    <span>Warranty</span>
+  </div>
+
+</div>
   <div class="hero-visual">
-    <div class="device-glyph">iPhone · iPad · MacBook · Apple Watch</div>
+    <div class="device-glyph">iPhone · iPad · MacBook · Apple Watch · Airpods </div>
   </div>
 </header>
 
@@ -292,7 +342,7 @@
     <div class="section-head">
       <div class="eyebrow-sm">Devices</div>
       <h2>Every device.<br>Genuinely Apple.</h2>
-      <p>New and certified pre-owned iPhone, iPad, Mac, and Apple Watch — each one inspected, tested, and backed by our own warranty.</p>
+      <p>New and certified pre-owned iPhone, iPad, Mac, AirPods and Apple Watch — each one inspected, tested, and backed by Apple Care warranty.</p>
     </div>
     <div class="grid-4">
       <div class="card">
@@ -336,11 +386,11 @@
       <div class="diag-step">
         <div class="diag-num">01</div>
         <h4>Diagnose</h4>
-        <p>Free, no-obligation assessment. We tell you exactly what's wrong and what it costs — no guesswork.</p>
+        <p>Fast assessment. We tell you exactly what's wrong and what it costs — no guesswork.</p>
       </div>
       <div class="diag-step">
         <div class="diag-num">02</div>
-        <h4>Repair</h4>
+        <h4>Same Day Repair</h4>
         <p>Genuine and premium-grade parts only. Most screen and battery jobs are done same day.</p>
       </div>
       <div class="diag-step">
@@ -350,8 +400,8 @@
       </div>
       <div class="diag-step">
         <div class="diag-num">04</div>
-        <h4>Warranty</h4>
-        <p>Every repair is covered, so you leave with confidence, not just a working phone.</p>
+        <h4>90 Days Warranty</h4>
+        <p>Every repair is covered, so you leave with confidence, not just a working device.</p>
       </div>
     </div>
 
@@ -387,16 +437,16 @@
         <tr>
           <td>Standard</td>
           <td>Same day, priority queue</td>
-          <td class="price">KSh 2,800</td>
+          <td class="price">KSh 2,500</td>
         </tr>
         <tr>
           <td>Economy</td>
           <td>24–48 hours</td>
-          <td class="price">KSh 2,200</td>
+          <td class="price">KSh 2,000</td>
         </tr>
       </tbody>
     </table>
-    <p style="font-size:13px;color:var(--gray);margin-top:16px;">Pricing shown is for standard screen replacement on common iPhone models. Final quote confirmed after free diagnosis.</p>
+    <p style="font-size:13px;color:var(--gray);margin-top:16px;">Pricing shown is for standard diagnostic tests on liquid damaged Apple devices. Final quote confirmed after diagnosis.</p>
   </div>
 </section>
 
@@ -415,7 +465,7 @@
         </ul>
         <a href="#visit" class="btn btn-primary" style="margin-top:10px;">Join in-store</a>
       </div>
-      <div class="split-visual">Care Club</div>
+      <div class="split-visual"> Care Club</div>
     </div>
   </div>
 </section>
@@ -436,7 +486,7 @@
         </div>
         <div class="loc-row">
           <div class="loc-label">Phone</div>
-          <div><a href="tel:+254710130021" style="color:inherit;">0710 130 021</a></div>
+          <div><a href="tel:+254710130021" style="color:inherit;">0712 007 722</a></div>
         </div>
         <div class="loc-row">
           <div class="loc-label">Email</div>
@@ -446,9 +496,9 @@
       <div>
         <div class="loc-label" style="margin-bottom:10px;">Hours</div>
         <div class="hours-list">
-          Monday – Friday: 9:00 – 19:00<br>
-          Saturday: 9:00 – 18:00<br>
-          Sunday: 11:00 – 17:00
+          Monday – Friday: 9:00 – 18:00<br>
+          Saturday: 9:30 – 15:00<br>
+          Sunday: Closed
         </div>
       </div>
     </div>
@@ -487,7 +537,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      Tawari Digital is an independent Apple device sales and repair specialist. Not affiliated with, endorsed, or sponsored by Apple Inc. Apple, iPhone, iPad, and MacBook are trademarks of Apple Inc.
+      Tawari Digital is an independent Premium Apple Device Reseller and Service Provider. AirPods, Apple Watch, iPhone, iPad, iMac, Mac Mini and MacBook are trademarks of Apple Inc.
     </div>
     <div class="footer-bottom">
       <div>© 2026 Tawari Digital Limited. All rights reserved.</div>
